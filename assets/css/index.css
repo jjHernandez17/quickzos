@@ -1,0 +1,100 @@
+ :root {
+      --morado: #6a0dad;
+      --morado-claro: #8a2be2;
+      --negro: #0d0d16;
+      --blanco: #f3f3f3;
+      --gris: #b8b8b8;
+    }
+
+    body {
+      background-color: var(--negro);
+      color: var(--blanco);
+      font-family: "Poppins", sans-serif;
+    }
+
+    .navbar {
+      background: rgba(13, 13, 22, 0.95);
+      backdrop-filter: blur(6px);
+    }
+
+    .navbar-brand span {
+      color: var(--morado-claro);
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+
+    /* HERO */
+    .hero {
+      background: radial-gradient(circle at top left, var(--morado) 0%, var(--negro) 70%);
+      padding: 6rem 1rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: var(--gris);
+      max-width: 600px;
+      margin: 1rem auto 2rem;
+    }
+
+    .btn-whatsapp {
+      background-color: #25d366;
+      color: white;
+      border: none;
+      font-weight: 600;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1ebe5b;
+      color: white;
+    }
+
+    /* PRODUCTOS */
+    #productos {
+      padding: 5rem 1rem;
+      background-color: #12121d;
+    }
+
+    .product-card {
+      background: #1a1a27;
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid #2b2b39;
+      height: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 30px rgba(138, 43, 226, 0.25);
+      border-color: var(--morado-claro);
+    }
+
+    .product-card h5 {
+      color: var(--morado-claro);
+      font-weight: 600;
+    }
+
+    .price {
+      color: var(--blanco);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #0a0a13;
+      color: var(--gris);
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
