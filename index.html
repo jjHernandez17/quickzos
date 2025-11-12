@@ -19,6 +19,7 @@
       background-color: #0e0e12;
       color: #fff;
       font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
     }
 
     /* NAVBAR */
@@ -40,7 +41,7 @@
     }
     .hero h1 {
       font-weight: 800;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 20px;
     }
     .hero p {
@@ -60,6 +61,104 @@
       background-color: #1ebe5d;
       color: #fff;
       transform: translateY(-3px);
+    }
+
+    /* 🔥 COMBOS DESTACADOS 🔥 */
+    #combos {
+      padding: 120px 20px 100px;
+      background: linear-gradient(135deg, #2b0050, #000);
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    #combos::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%);
+      animation: glow 6s infinite alternate;
+      z-index: 0;
+      pointer-events: none; /* ✅ evita bloquear clics */
+    }
+
+    @keyframes glow {
+      from { transform: scale(1); opacity: 0.7; }
+      to { transform: scale(1.2); opacity: 1; }
+    }
+
+    .combo-card {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(135deg, #1a1a1a, #0e0e12);
+      border: 1px solid #2d2d2d;
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+      transition: all 0.5s ease;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeSlide 1s forwards;
+    }
+
+    .combo-card:nth-child(1) { animation-delay: 0.2s; }
+    .combo-card:nth-child(2) { animation-delay: 0.4s; }
+    .combo-card:nth-child(3) { animation-delay: 0.6s; }
+    .combo-card:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .combo-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+    }
+
+    .combo-card::after {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(37,211,102,0.15));
+      transform: rotate(25deg);
+      transition: 0.6s;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .combo-card:hover::after {
+      top: 0;
+      left: 0;
+      opacity: 1;
+    }
+
+    .combo-card h3 {
+      font-weight: 700;
+      color: #a855f7;
+      margin-bottom: 10px;
+    }
+
+    .combo-card p {
+      color: #ccc;
+    }
+
+    .combo-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #25d366;
+      margin: 15px 0;
     }
 
     /* PRODUCTOS */
@@ -128,6 +227,7 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="menu">
         <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link text-white" href="#combos">Combos</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="#productos">Productos</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="#contacto">Contacto</a></li>
         </ul>
@@ -146,6 +246,14 @@
     </div>
   </section>
 
+  <!-- 🔥 COMBOS DESTACADOS 🔥 -->
+  <section id="combos">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-5 text-white" style="font-size:2.3rem;">🔥 Combos Destacados 🔥</h2>
+      <div class="row g-4 justify-content-center" id="listaCombos"></div>
+    </div>
+  </section>
+
   <!-- PRODUCTOS -->
   <section id="productos">
     <div class="container">
@@ -158,7 +266,7 @@
   <section id="contacto" class="py-5">
     <div class="container text-center">
       <h2 class="fw-bold mb-4">Contáctanos</h2>
-      <p class="text-muted mb-4">¿Tienes dudas o quieres un combo personalizado? Escríbenos.</p>
+      <p class="text-white mb-4">¿Tienes dudas o quieres un combo personalizado? Escríbenos.</p>
       <a href="https://wa.me/573001112233?text=Hola!%20Quiero%20más%20información%20sobre%20QuickZos" target="_blank" class="btn btn-whatsapp btn-lg">
         <i class="bi bi-whatsapp"></i> Chatear ahora
       </a>
@@ -170,48 +278,68 @@
   </footer>
 
   <script>
-    const productos = [
-      {nombre: "Netflix", precio: "$12.000 / Perfil", detalle: "Cuenta completa X"},
-      {nombre: "Amazon", precio: "$5.000 / Perfil", detalle: "Cuenta completa $15.000"},
-      {nombre: "Disney Plus", precio: "$5.000 / Perfil", detalle: "Cuenta completa $15.000"},
-      {nombre: "Disney Premium", precio: "$12.000 / Perfil", detalle: "Cuenta completa $30.000"},
-      {nombre: "HBO Max", precio: "$5.000 / Perfil", detalle: "Cuenta completa $15.000"},
-      {nombre: "Prime Video", precio: "$5.000 / Perfil", detalle: "Cuenta completa $15.000"},
-      {nombre: "Paramount", precio: "$5.000 / Perfil", detalle: "Cuenta completa $15.000"},
-      {nombre: "Crunchyroll", precio: "$5.000 / Perfil", detalle: "Cuenta completa $15.000"},
-      {nombre: "Plex", precio: "$5.000 / Perfil", detalle: "Cuenta completa $15.000"},
-      {nombre: "Vix", precio: "$5.000 / Perfil", detalle: "Cuenta completa $15.000"},
-      {nombre: "Canva", precio: "$10.000", detalle: "3 meses $18.000"},
-      {nombre: "Apple TV", precio: "$10.000", detalle: "Cuenta completa X"},
-      {nombre: "Jellyfin", precio: "$10.000", detalle: "Cuenta completa $18.000"},
-      {nombre: "Universal", precio: "$10.000", detalle: "Cuenta completa $18.000"},
-      {nombre: "Duolingo", precio: "$12.000", detalle: "Cuenta completa X"},
-      {nombre: "IPTV Smarters Pro", precio: "$10.000", detalle: "Cuenta completa $20.000"},
-      {nombre: "Flujo TV", precio: "$10.000", detalle: "Cuenta completa $20.000"},
-      {nombre: "Spotify", precio: "$12.000", detalle: "3 meses $25.000"},
-      {nombre: "YouTube", precio: "$12.000", detalle: "3 meses $25.000"},
-      {nombre: "Pornhub", precio: "$12.000", detalle: "Cuenta completa X"},
-      {nombre: "Office Licencia 1 Año", precio: "$20.000", detalle: "Word, Excel, PowerPoint"},
-      {nombre: "CapCut", precio: "$25.000", detalle: "3 meses $50.000"},
-      {nombre: "ChatGPT", precio: "$25.000", detalle: "Cuenta completa X"},
-      {nombre: "Xbox Game Pass", precio: "$50.000", detalle: "3 meses $80.000"},
-      {nombre: "Open English", precio: "$280.000", detalle: "6 meses"},
-      {nombre: "DirectvGO Básico sin Win", precio: "$15.000", detalle: "Cuenta completa X"},
-      {nombre: "DirectvGO Básico con Win", precio: "$25.000", detalle: "Cuenta completa X"},
-      {nombre: "DirectvGO Oro Win", precio: "$30.000", detalle: "Cuenta completa X"}
+    const combos = [
+      {nombre: "Combo Familiar", precio: "$20.000", detalle: "Elige 3 plataformas de streaming (Netflix, Crunchyroll, Prime Video, Disney Plus, HBO Max, Plex, Paramount, Vix, Viki)"},
+      {nombre: "Combo pareja", precio: "$17.000", detalle: "Elije 2 plataformas ( Crunchyroll, Prime Video, Disney Plus, HBO Max, Plex, Paramount, Vix, Viki)"},
+      {nombre: "Combo trasnochon", precio: "$30.000", detalle: "elige 5 plataformas  (Netflix, Crunchyroll, Prime Video, Disney Plus, HBO Max, Plex, Paramount, Vix, Viki)"}
+      
     ];
 
-    const contenedor = document.getElementById('listaProductos');
-    contenedor.innerHTML = productos.map(p => `
+    const productos = [
+      {nombre: "Netflix", precio: "$15.000 / Perfil"},
+      {nombre: "Amazon", precio: "$9.900 / Perfil"},
+      {nombre: "Disney Plus", precio: "$9.900 / Perfil"},
+      {nombre: "Disney Premium", precio: "$15.000 / Perfil"},
+      {nombre: "HBO Max", precio: "$9.900 / Perfil"},
+      {nombre: "Prime Video", precio: "$11.000 / Perfil"},
+      {nombre: "Paramount", precio: "$9.900 / Perfil"},
+      {nombre: "Crunchyroll", precio: "$9.900 / Perfil"},
+      {nombre: "Plex", precio: "$10.500 / Perfil"},
+      {nombre: "Vix", precio: "$10.000 / Perfil"},
+      {nombre: "Canva", precio: "$15.000"},
+      {nombre: "Apple TV", precio: "$15.000"},
+      {nombre: "Jellyfin", precio: "$17.000"},
+      {nombre: "Universal", precio: "$15.500"},
+      {nombre: "Duolingo", precio: "$16.900"},
+      {nombre: "IPTV Smarters Pro", precio: "$15.000"},
+      {nombre: "Flujo TV", precio: "$15.000"},
+      {nombre: "Spotify", precio: "$16.000"},
+      {nombre: "YouTube", precio: "$16.000"},
+      {nombre: "Pornhub", precio: "$15.500"},
+      {nombre: "Office Licencia 1 Año", precio: "$26.000"},
+      {nombre: "CapCut", precio: "$29.900"},
+      {nombre: "ChatGPT", precio: "$31.000"},
+      {nombre: "Xbox Game Pass", precio: "$55.500"},
+      {nombre: "Open English", precio: "$290.000"},
+      {nombre: "DirectvGO Básico sin Win", precio: "$19.900"},
+      {nombre: "DirectvGO Básico con Win", precio: "$29.900"},
+      {nombre: "DirectvGO Oro Win", precio: "$34.000"}
+    ];
+
+    // Combos destacados
+    const combosContainer = document.getElementById('listaCombos');
+    combosContainer.innerHTML = combos.map(c => `
+      <div class="col-lg-3 col-md-6">
+        <div class="combo-card">
+          <h3>${c.nombre}</h3>
+          <p>${c.detalle}</p>
+          <div class="combo-price">${c.precio}</div>
+          <a href="https://wa.me/573145308050?text=Hola!%20Quiero%20comprar%20${encodeURIComponent(c.nombre)}%20en%20QuickZos" target="_blank" class="btn btn-whatsapp w-100">
+            Comprar Combo <i class="bi bi-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    `).join('');
+
+    // Productos
+    const productosContainer = document.getElementById('listaProductos');
+    productosContainer.innerHTML = productos.map(p => `
       <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="product-card text-center">
           <img src="assets/img/${p.nombre.toLowerCase().replace(/ /g,'-')}.png" alt="${p.nombre}">
           <h5>${p.nombre}</h5>
           <p class="price">${p.precio}</p>
-          <p class="text-muted">${p.detalle}</p>
-          <a href="https://wa.me/573001112233?text=Hola!%20Quiero%20comprar%20${encodeURIComponent(p.nombre)}%20en%20QuickZos" 
-             target="_blank" 
-             class="btn btn-whatsapp w-100">
+          <a href="https://wa.me/573145308050?text=Hola!%20Quiero%20comprar%20${encodeURIComponent(p.nombre)}%20en%20QuickZos" target="_blank" class="btn btn-whatsapp w-100">
             Comprar <i class="bi bi-whatsapp"></i>
           </a>
         </div>
