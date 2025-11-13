@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QuickZos — Plataformas Digitales</title>
-
+  <link rel="stylesheet" href="assets/css/index.css">
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -82,7 +82,7 @@
       background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%);
       animation: glow 6s infinite alternate;
       z-index: 0;
-      pointer-events: none; /* ✅ evita bloquear clics */
+      pointer-events: none;
     }
 
     @keyframes glow {
@@ -204,6 +204,31 @@
       color: #a855f7;
     }
 
+    /* HORARIO BONITO */
+    .horario {
+      margin-top: 40px;
+      background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(37,211,102,0.1));
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 20px;
+      padding: 20px 25px;
+      display: inline-block;
+      color: #fff;
+      font-weight: 600;
+      animation: pulso 3s infinite ease-in-out;
+      box-shadow: 0 0 15px rgba(168,85,247,0.3);
+    }
+
+    @keyframes pulso {
+      0%, 100% { box-shadow: 0 0 15px rgba(168,85,247,0.3); }
+      50% { box-shadow: 0 0 30px rgba(37,211,102,0.4); }
+    }
+
+    .horario i {
+      color: #25d366;
+      margin-right: 8px;
+      font-size: 1.3rem;
+    }
+
     footer {
       background-color: #000;
       text-align: center;
@@ -215,9 +240,12 @@
 </head>
 <body>
 
+  
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
+      
       <a class="navbar-brand fw-bold text-white" href="#">
         <span>QuickZos</span>
       </a>
@@ -235,6 +263,8 @@
     </div>
   </nav>
 
+  
+
   <!-- HERO -->
   <section class="hero">
     <div class="container">
@@ -244,8 +274,15 @@
         <i class="bi bi-whatsapp"></i> Comprar por WhatsApp
       </a>
     </div>
+     <!-- HORARIO -->
+      <div class="horario">
+        <i class="bi bi-clock-fill"></i> Horario de atención: <span style="color:#25d366;">10 AM - 9 PM</span> todos los días
+      </div>
+    </div>
+    
   </section>
 
+  
   <!-- 🔥 COMBOS DESTACADOS 🔥 -->
   <section id="combos">
     <div class="container text-center">
@@ -263,14 +300,15 @@
   </section>
 
   <!-- CONTACTO -->
-  <section id="contacto" class="py-5">
-    <div class="container text-center">
+  <section id="contacto" class="py-5 text-center">
+    <div class="container">
       <h2 class="fw-bold mb-4">Contáctanos</h2>
       <p class="text-white mb-4">¿Tienes dudas o quieres un combo personalizado? Escríbenos.</p>
-      <a href="https://wa.me/573145308050?text=Hola!%20Quiero%20más%20información%20sobre%20QuickZos" target="_blank" class="btn btn-whatsapp btn-lg">
+      <a href="https://wa.me/573145308050?text=Hola!%20Quiero%20más%20información%20sobre%20QuickZos" target="_blank" class="btn btn-whatsapp btn-lg mb-4">
         <i class="bi bi-whatsapp"></i> Chatear ahora
       </a>
-    </div>
+
+     
   </section>
 
   <footer>
@@ -280,28 +318,27 @@
   <script>
     const combos = [
       {nombre: "Combo Familiar", precio: "$20.000", detalle: "Elige 3 plataformas de streaming (Netflix, Crunchyroll, Prime Video, Disney Plus, HBO Max, Plex, Paramount, Vix, Viki)"},
-      {nombre: "Combo pareja", precio: "$17.000", detalle: "Elije 2 plataformas ( Crunchyroll, Prime Video, Disney Plus, HBO Max, Plex, Paramount, Vix, Viki)"},
-      {nombre: "Combo trasnochon", precio: "$35.000", detalle: "elige 5 plataformas  (Netflix, Crunchyroll, Prime Video, Disney Plus, HBO Max, Plex, Paramount, Vix, Viki)"}
-      
+      {nombre: "Combo pareja", precio: "$17.000", detalle: "Elije 2 plataformas (Crunchyroll, Prime Video, Disney Plus, HBO Max, Plex, Paramount, Vix, Viki)"},
+      {nombre: "Combo trasnochon", precio: "$35.000", detalle: "Elige 5 plataformas (Netflix, Crunchyroll, Prime Video, Disney Plus, HBO Max, Plex, Paramount, Vix, Viki)"}
     ];
 
     const productos = [
-      {nombre: "Netflix", precio: "$15.000 / Perfil"},
-      {nombre: "Amazon", precio: "$9.900 / Perfil"},
-      {nombre: "Disney Plus", precio: "$9.900 / Perfil"},
-      {nombre: "Disney Premium", precio: "$15.000 / Perfil"},
-      {nombre: "HBO Max", precio: "$9.900 / Perfil"},
-      {nombre: "Prime Video", precio: "$11.000 / Perfil"},
-      {nombre: "Paramount", precio: "$9.900 / Perfil"},
-      {nombre: "Crunchyroll", precio: "$9.900 / Perfil"},
-      {nombre: "Plex", precio: "$10.500 / Perfil"},
-      {nombre: "Vix", precio: "$10.000 / Perfil"},
-      {nombre: "Canva", precio: "$15.000"},
-      {nombre: "Apple TV", precio: "$15.000"},
-      {nombre: "Jellyfin", precio: "$17.000"},
-      {nombre: "Universal", precio: "$15.500"},
-      {nombre: "Duolingo", precio: "$16.900"},
-      {nombre: "IPTV Smarters Pro", precio: "$15.000"},
+      {nombre: "Netflix", precio: "$15.000/mes / Perfil"},
+      {nombre: "Amazon", precio: "$9.900/mes / Perfil"},
+      {nombre: "Disney Plus", precio: "$9.900/mes / Perfil"},
+      {nombre: "Disney Premium", precio: "$15.000/mes / Perfil"},
+      {nombre: "HBO Max", precio: "$9.900/mes / Perfil"},
+      {nombre: "Prime Video", precio: "$11.000/mes / Perfil"},
+      {nombre: "Paramount", precio: "$9.900/mes / Perfil"},
+      {nombre: "Crunchyroll", precio: "$9.900/mes / Perfil"},
+      {nombre: "Plex", precio: "$10.500/mes / Perfil"},
+      {nombre: "Vix", precio: "$10.000/mes / Perfil"},
+      {nombre: "Canva", precio: "$15.000/mes"},
+      {nombre: "Apple TV", precio: "$15.000/mes"},
+      {nombre: "Jellyfin", precio: "$17.000/mes"},
+      {nombre: "Universal", precio: "$15.500/mes"},
+      {nombre: "Duolingo", precio: "$16.900/mes"},
+      {nombre: "IPTV Smarters Pro", precio: "$15.000/mes"},
       {nombre: "Flujo TV", precio: "$15.000"},
       {nombre: "Spotify", precio: "$16.000"},
       {nombre: "YouTube", precio: "$16.000"},
@@ -317,8 +354,7 @@
     ];
 
     // Combos destacados
-    const combosContainer = document.getElementById('listaCombos');
-    combosContainer.innerHTML = combos.map(c => `
+    document.getElementById('listaCombos').innerHTML = combos.map(c => `
       <div class="col-lg-3 col-md-6">
         <div class="combo-card">
           <h3>${c.nombre}</h3>
@@ -332,8 +368,7 @@
     `).join('');
 
     // Productos
-    const productosContainer = document.getElementById('listaProductos');
-    productosContainer.innerHTML = productos.map(p => `
+    document.getElementById('listaProductos').innerHTML = productos.map(p => `
       <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="product-card text-center">
           <img src="assets/img/${p.nombre.toLowerCase().replace(/ /g,'-')}.png" alt="${p.nombre}">
